@@ -1,4 +1,4 @@
-package icezhg.util;
+package com.icezhg.utils.serializer;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -12,10 +12,10 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 /**
  * Created by zhongjibing on 2016/11/2.
  */
-public class DateSerializer extends JsonSerializer<Date> {
+public class DateTimeSerializer extends JsonSerializer<Date> {
 
     @Override
     public void serialize(Date value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonProcessingException {
-        jgen.writeString(new SimpleDateFormat("yyyy-MM-dd").format(value));
+        jgen.writeString(value == null ? null : new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(value));
     }
 }

@@ -1,4 +1,4 @@
-package icezhg.util;
+package com.icezhg.utils;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,23 +29,6 @@ public final class JsonUtil {
     }
 
     private JsonUtil() {
-    }
-
-    private static class StringUtil {
-
-        private static boolean isBlank(String str) {
-            if (str == null || str.length() == 0) {
-                return true;
-            }
-
-            for (int i = 0; i < str.length(); i++) {
-                if (!Character.isWhitespace(str.charAt(i))) {
-                    return false;
-                }
-            }
-
-            return true;
-        }
     }
 
     private static class ObjectMapperFactory {
@@ -84,7 +68,7 @@ public final class JsonUtil {
     }
 
     public static <T> T toBean(String json, Class<T> clazz) {
-        if (!StringUtil.isBlank(json)) {
+        if (StringUtils.isNotBlank(json)) {
             try {
                 return OBJECT_MAPPER.readValue(json, clazz);
             } catch (IOException e) {
@@ -95,7 +79,7 @@ public final class JsonUtil {
     }
 
     public static <T> T toBean(String json, TypeReference<T> typeRef) {
-        if (!StringUtil.isBlank(json)) {
+        if (StringUtils.isNotBlank(json)) {
             try {
                 return OBJECT_MAPPER.readValue(json, typeRef);
             } catch (IOException e) {
