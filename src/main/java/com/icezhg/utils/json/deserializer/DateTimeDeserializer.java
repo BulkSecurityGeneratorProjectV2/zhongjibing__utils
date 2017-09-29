@@ -1,4 +1,4 @@
-package com.icezhg.utils.deserializer;
+package com.icezhg.utils.json.deserializer;
 
 import java.io.IOException;
 import java.text.ParseException;

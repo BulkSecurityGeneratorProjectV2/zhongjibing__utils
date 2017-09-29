@@ -1,4 +1,4 @@
-package com.icezhg.utils;
+package com.icezhg.utils.http;
 
 import java.io.BufferedReader;
 import java.io.IOException;

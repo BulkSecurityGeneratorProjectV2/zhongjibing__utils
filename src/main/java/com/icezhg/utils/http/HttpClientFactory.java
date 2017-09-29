@@ -1,4 +1,4 @@
-package com.icezhg.utils;
+package com.icezhg.utils.http;
 
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;

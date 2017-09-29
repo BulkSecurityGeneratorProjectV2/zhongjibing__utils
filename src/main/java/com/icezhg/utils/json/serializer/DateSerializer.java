@@ -1,4 +1,4 @@
-package com.icezhg.utils.serializer;
+package com.icezhg.utils.json.serializer;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;

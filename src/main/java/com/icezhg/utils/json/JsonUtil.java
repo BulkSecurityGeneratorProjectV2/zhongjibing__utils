@@ -1,4 +1,4 @@
-package com.icezhg.utils;
+package com.icezhg.utils.json;
 
 import java.io.IOException;
 import java.text.DateFormat;
