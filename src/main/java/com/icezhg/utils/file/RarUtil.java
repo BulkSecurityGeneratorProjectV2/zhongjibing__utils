@@ -21,12 +21,11 @@ public final class RarUtil {
         }
     }
 
-    public static void unrar(String filePath, String targetDirectory) throws IOException {
-        File archiveFile = new File(filePath);
+    public static void unrar(File rarFile, String targetDirectory) throws IOException {
 
-        assertRarFile(archiveFile);
+        assertRarFile(rarFile);
 
-        try (Archive archive = new Archive(archiveFile)) {
+        try (Archive archive = new Archive(rarFile)) {
             FileHeader fileHeader;
             while ((fileHeader = archive.nextFileHeader()) != null) {
                 String fileName = fileHeader.getFileNameW().isEmpty() ? fileHeader.getFileNameString() : fileHeader.getFileNameW();

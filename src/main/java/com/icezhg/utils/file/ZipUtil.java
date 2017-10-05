@@ -30,12 +30,11 @@ public final class ZipUtil {
         }
     }
 
-    public static void unzip(String filePath, String targetDirectory) throws IOException {
-        File archiveFile = new File(filePath);
+    public static void unzip(File archive, String targetDirectory) throws IOException {
 
-        assertZipFile(archiveFile);
+        assertZipFile(archive);
 
-        try (ZipFile zipFile = new ZipFile(archiveFile, CHARSET_GBK)) {
+        try (ZipFile zipFile = new ZipFile(archive, CHARSET_GBK)) {
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             while (entries.hasMoreElements()) {
                 ZipEntry zipEntry = entries.nextElement();
