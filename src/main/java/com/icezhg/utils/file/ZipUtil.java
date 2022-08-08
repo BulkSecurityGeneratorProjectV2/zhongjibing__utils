@@ -38,7 +38,10 @@ public final class ZipUtil {
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             while (entries.hasMoreElements()) {
                 ZipEntry zipEntry = entries.nextElement();
-                File file = new File(FileUtil.completeDirectoryName(targetDirectory) + zipEntry.getName());
+                File file = new File(FileUtil.completeDirectoryName(targetDirectory), zipEntry.getName());
+                if (!file.toPath().normalize().startsWith(FileUtil.completeDirectoryName(targetDirectory))) {
+                    throw new RuntimeException("Bad zip entry");
+                }
 
                 if (zipEntry.isDirectory()) {
                     FileUtil.mkdirs(file);
